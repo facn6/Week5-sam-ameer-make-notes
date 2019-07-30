@@ -1,0 +1,32 @@
+{
+  "name": "week5-make-note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "tape ./tests/test.js | tap-spec",
+    "start": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facn6/Week5-sam-ameer-make-notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/facn6/Week5-sam-ameer-make-notes/issues"
+  },
+  "homepage": "https://github.com/facn6/Week5-sam-ameer-make-notes#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  },
+  "keywords": []
+}
