@@ -23,6 +23,8 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2",
     "tap-spec": "^5.0.0",
