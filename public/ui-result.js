@@ -27,12 +27,27 @@ var str = ['Im A Mess Bebe Rexha ringtones - iRingtones.net.mp3',
 
  str.forEach(function (file) {
  var node = document.createElement("LI");
+ node.className = "file_li";
  var textnode = document.createTextNode(file);
  node.appendChild(textnode);
  document.getElementById("demo").appendChild(node);
 
  });
 
+ function search_audio() { 
+    let input = document.getElementById('myInput').value; 
+    input=input.toLowerCase(); 
+    let x = document.getElementsByClassName('file_li'); 
+      console.log('sss'+x);
+    // for (i = 0; i < x.length; i++) {  
+    //     if (!x[i].innerHTML.toLowerCase().includes(input)) { 
+    //         x[i].style.display="none"; 
+    //     } 
+    //     else { 
+    //         x[i].style.display="list-item";                  
+    //     } 
+    // } 
+} 
 //  let input = document.getElementById('myInput').value;
 //     input=input.toLowerCase(); 
 //     let x = str; 
