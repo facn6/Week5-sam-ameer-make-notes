@@ -1,4 +1,5 @@
 
+
 fetch('http://localhost:4000/api/assets')
   .then(data => data.json()).then(({ files }) => {
     files.forEach((file) => {
@@ -10,6 +11,10 @@ fetch('http://localhost:4000/api/assets')
     });
   });
 
+fetch('http://localhost:4000/api/transcribe')
+  .then(data => data.json()).then(({ files }) => {
+    console.log('front end transcription result = ', files);
+  });
 
 function search_audio() {
   console.log('here1');

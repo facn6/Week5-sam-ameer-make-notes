@@ -20,7 +20,9 @@
     "url": "https://github.com/facn6/Week5-sam-ameer-make-notes/issues"
   },
   "homepage": "https://github.com/facn6/Week5-sam-ameer-make-notes#readme",
-  "dependencies": {},
+  "dependencies": {
+    "request": "^2.88.0"
+  },
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb-base": "^13.2.0",
