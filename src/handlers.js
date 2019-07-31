@@ -44,7 +44,6 @@ const returnTranscription = (filename, res) => {
       res.writeHead(500, { 'content-type': 'text/plain' });
       res.end('server error');
     } else {
-      console.log('return transcription result = ', result);
       res.writeHead(200, { 'content-type': 'application/json' });
       res.end(JSON.stringify({ files: result }));
     }

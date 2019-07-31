@@ -1,6 +1,5 @@
 
-
-fetch('http://localhost:4000/api/assets')
+fetch(`${window.location.href}api/assets`)
   .then(data => data.json()).then(({ files }) => {
     files.forEach((file) => {
       const node = document.createElement('LI');
@@ -11,10 +10,12 @@ fetch('http://localhost:4000/api/assets')
     });
   });
 
-fetch('http://localhost:4000/api/transcribe')
-  .then(data => data.json()).then(({ files }) => {
-    console.log('front end transcription result = ', files);
-  });
+const transcribe = (filename) => {
+  fetch(`${window.location.href}api/transcribe?file=${filename}`)
+    .then(data => data.json()).then(({ files }) => {
+      // console.log('front end transcription result = ', files);
+    });
+};
 
 function search_audio() {
   console.log('here1');
