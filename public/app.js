@@ -13,9 +13,10 @@ fetch(`${window.location.href}api/assets`)
 const transcribe = (filename) => {
   fetch(`${window.location.href}api/transcribe?file=${filename}`)
     .then(data => data.json()).then(({ files }) => {
-      // console.log('front end transcription result = ', files);
+      console.log('front end transcription result = ', files);
     });
 };
+// transcribe('ameer-test.wav');
 
 function search_audio() {
   console.log('here1');
