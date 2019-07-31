@@ -1,4 +1,5 @@
 
+
 fetch('http://localhost:4000/api/assets')
   .then(data => data.json()).then(({ files }) => {
     files.forEach((file) => {

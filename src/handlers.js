@@ -30,7 +30,6 @@ const apiHandler = (req, res) => {
   if (req.url.includes('assets')) {
     utils.folderContents('./Assets', (err, result) => {
       if (err) {
-        console.log(err);
         res.writeHead(500, { 'content-type': 'text/plain' });
         res.end('server error');
       } else {
