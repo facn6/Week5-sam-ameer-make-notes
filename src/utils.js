@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const request = require('request');
-const apikey = require('../authFiles/keys.js');
+
+const apikey = process.env.API_KEY;
 
 const googleUrl = 'https://speech.googleapis.com/v1p1beta1/speech:recognize?key=';
 
@@ -31,7 +32,7 @@ const transcribeAudio = (filename, cb) => {
 
   const req = {
     method: 'POST',
-    url: googleUrl + apikey.GOOGLE,
+    url: googleUrl + apikey,
     body: JSON.stringify({
       config,
       audio,
