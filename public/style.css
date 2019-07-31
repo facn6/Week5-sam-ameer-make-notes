@@ -1,4 +1,23 @@
 
+* { box-sizing: border-box; }
+body {
+  background: rgb(179, 245, 196);
+
+  font: 16px Arial; 
+  justify-content: center;
+}
+.title-design{
+  text-align: center;
+  font-family: Impact;
+  color: rgb(33, 65, 41)
+}
+.mini-title
+{
+
+  text-align: center;
+  font-family: Impact;
+  color: rgb(11, 66, 18)
+}
 #list{ 
   font-size:  1.5em; 
   margin-left: 90px; 
