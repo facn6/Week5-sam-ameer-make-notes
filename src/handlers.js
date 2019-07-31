@@ -11,8 +11,6 @@ const extensionObj = {
 
 const homeHandler = (req, res) => {
   const { pathname } = url.parse(req.url);
-  console.log(url.parse(req.url));
-
   const extension = pathname.split('.').length > 1 ? pathname.split('.')[1] : 'html';
   const endPath = pathname === '/' ? 'index.html' : pathname;
   const filepath = path.join(__dirname, '..', '/public/', endPath);
