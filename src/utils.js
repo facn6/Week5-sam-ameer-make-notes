@@ -1,5 +1,6 @@
 const fs = require('fs');
-// const speech = require('@google-cloud/speech');
+const path = require('path');
+
 const request = require('request');
 const apikey = require('../authFiles/keys.js');
 
@@ -16,20 +17,17 @@ const folderContents = (dir, cb) => {
   });
 };
 
-const transcribe = (filename) => {
+const transcribeAudio = (filename, cb) => {
+  const filepath = path.join(__dirname, '..', 'Assets', filename);
+
   const config = {
     encoding: 'LINEAR16',
     languageCode: 'en-US',
   };
 
   const audio = {
-    content: fs.readFileSync(filename).toString('base64'),
+    content: fs.readFileSync(filepath).toString('base64'),
   };
-
-  // const body = {
-  //   config,
-  //   audio,
-  // };
 
   const req = {
     method: 'POST',
@@ -42,15 +40,17 @@ const transcribe = (filename) => {
 
   request.post(req, (err, res, jsonBody) => {
     if (err) {
-      return console.error('upload failed:', err);
+      cb(err);
     }
     const body = JSON.parse(jsonBody);
     const transcript = body.results.map(result => result.alternatives[0].transcript).join('\n');
+
+    cb(null, transcript);
   });
 };
 
 
 module.exports = {
   folderContents,
-  transcribe,
+  transcribeAudio,
 };

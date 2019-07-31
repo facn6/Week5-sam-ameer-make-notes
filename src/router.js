@@ -6,8 +6,10 @@ const router = (req, res) => {
 
   if (pathname === '/' || pathname === '/style.css' || pathname === '/app.js' || pathname === '/assets/search-icon.png') {
     handlers.homeHandler(req, res);
-  } else if (pathname.includes('/api/')) {
-    handlers.apiHandler(req, res);
+  } else if (pathname === '/api/assets') {
+    handlers.returnAssets(req, res);
+  } else if (pathname === '/api/transcribe') {
+    handlers.returnTranscription('ameer-test.wav', res);
   } else {
     handlers.errorHandler(req, res);
   }

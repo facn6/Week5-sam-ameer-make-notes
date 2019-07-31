@@ -26,18 +26,29 @@ const homeHandler = (req, res) => {
   });
 };
 
-const apiHandler = (req, res) => {
-  if (req.url.includes('assets')) {
-    utils.folderContents('./Assets', (err, result) => {
-      if (err) {
-        res.writeHead(500, { 'content-type': 'text/plain' });
-        res.end('server error');
-      } else {
-        res.writeHead(200, { 'content-type': 'application/json' });
-        res.end(JSON.stringify({ files: result }));
-      }
-    });
-  }
+const returnAssets = (req, res) => {
+  utils.folderContents('./Assets', (err, files) => {
+    if (err) {
+      res.writeHead(500, { 'content-type': 'text/plain' });
+      res.end('server error');
+    } else {
+      res.writeHead(200, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ files }));
+    }
+  });
+};
+
+const returnTranscription = (filename, res) => {
+  utils.transcribeAudio(filename, (err, result) => {
+    if (err) {
+      res.writeHead(500, { 'content-type': 'text/plain' });
+      res.end('server error');
+    } else {
+      console.log('return transcription result = ', result);
+      res.writeHead(200, { 'content-type': 'application/json' });
+      res.end(JSON.stringify({ files: result }));
+    }
+  });
 };
 
 const errorHandler = (req, res) => {
@@ -49,6 +60,7 @@ const errorHandler = (req, res) => {
 
 module.exports = {
   homeHandler,
-  apiHandler,
+  returnAssets,
+  returnTranscription,
   errorHandler,
 };
