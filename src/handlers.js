@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const querystring = require('querystring');
 const url = require('url');
+const utils = require('./utils');
 
 const extensionObj = {
   html: 'text/html',
@@ -26,7 +27,18 @@ const homeHandler = (req, res) => {
 };
 
 const apiHandler = (req, res) => {
-
+  if (req.url.includes('assets')) {
+    utils.folderContents('./Assets', (err, result) => {
+      if (err) {
+        console.log(err);
+        res.writeHead(500, { 'content-type': 'text/plain' });
+        res.end('server error');
+      } else {
+        res.writeHead(200, { 'content-type': 'application/json' });
+        res.end(JSON.stringify({ files: result }));
+      }
+    });
+  }
 };
 
 const errorHandler = (req, res) => {
