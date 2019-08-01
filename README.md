@@ -8,7 +8,22 @@ https://make-notes.herokuapp.com/
 ### Run Locally
 You can run the app locally by cloning and running npm install.
 
+#### Google Speech to Text api auth
 You will need to create your own Google API keys to run the google speech to text API but the rest of the app will work and you can see what it is doing to test it.
+
+To create an API key you need to go to the google developer console and set up an account. Then create a new app turn on the 'speech to text' api.
+It gives you a config .json file which you need to add to your local environment using
+```
+export GOOGLE_APPLICATION_CREDENTIALS=_path_to_your_json_config_file_here_
+```
+You can use the api with just these credentials. In our case we also used an API key to make the api calls using the request module instead of googles speech to text module which does all the stuff for you and makes life easier.
+
+So you in this case you also need to request an api key from google and then add that to your local environment
+```
+export API_KEY=_api_key_here_
+```
+
+
 
 ## About
 
