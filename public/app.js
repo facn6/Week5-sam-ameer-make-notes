@@ -16,20 +16,20 @@ fetch(`${window.location.href}api/assets`)
   });
 
 const transcribe = (filename) => {
+
   fetch(`${window.location.href}api/transcribe?file=${filename}`)
     .then(data => data.json()).then(({ files }) => {
-      console.log('here2');
-      return files;
+      document.getElementById("note").innerHTML = files;
+      console.log('here');
     });
 };
 
 document.getElementById("start").addEventListener("click", function(){
-  console.log('here1');
- document.getElementById("note").innerHTML = transcribe(searchBar.value);
+  transcribe(searchBar.value);
 });
 
 function search_audio() {
-  let input = searchBar.value.toLowerCase();
+  const input = searchBar.value.toLowerCase();
   const x = document.getElementsByClassName('file_li');
   for (i = 0; i < x.length; i++) {
     if (!x[i].innerHTML.toLowerCase().includes(input)) {
