@@ -1,6 +1,13 @@
+dist: trusty
 language: node_js
 node_js:
-- node
+  - "10"
+matrix:
+  fast_finish: true
+install:
+    - npm install
+script:
+    - npm test
 env:
   global:
   - secure: U5lGsJZCxfwKLsXE7XNDjuvfnUC1Aw5S/AfFqDS0sPpoVxC6zbhDGd+PbS/EpLmdwiIu2xTpZqLcksx5zFteyAcwsv1bbBBIyfpEPFsS5GprPvseIaHYeqPpelXJwF8hJmFhlwTpubr654pcHEXlrWqSjGTW4U4teq4LFPbQh5yttAZsITIiG3re5mheEuPpQpau9suS+KLGzNJVsDU77O81ij+G5vSiGzmuXwHNr4MIA3HHNXqU03A3czTfP5j4Uc/h6txkqitlttd6Uv61NGuhbG3RmkW9EGk3icxC4FxpqtCtJlSN5cUxpC4WO6OK3honDfdp9nQHucQSp44++lqdtTh/jwvsU5DCzSbr623mTomZtQKfFApqLjGbPaoFCXCPgG/h/pEmvfqcr5LRDjnvBCi0hgrXGDMonh9jYiQB1C/FDHaRiYwIz595HRoM0eH64bDi4gGUeCaAoNcj+lUOoAJYwJyADjc0YJMyvPZPX7hJe/taadQTTzKvHLBY0DvBij4IGhJg6zPL9EOKL4nQFdT64HhGUaY8T/O6dzwf/P0qEeMkYAlYVZigJK1V34H0dJvNMkZjq+WPnOTTryaNQeMjxcGI3mf/wvsBYcFyBSWyiys4W4m57UiKk5prul9v7N5+on3GhMV2JbOfMAAy98rTrz9Q/bNQP4uS5P8=
