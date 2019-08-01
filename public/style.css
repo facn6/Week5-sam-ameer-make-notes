@@ -60,3 +60,14 @@ ul li::before {
   margin: 4px 2px;
   cursor: pointer;
 }_
+
+.paragrph{
+
+  border: 1px solid gray;
+  padding: 8px;
+}
+p {
+  text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;
+}
