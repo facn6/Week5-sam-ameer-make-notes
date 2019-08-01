@@ -23,6 +23,40 @@ body {
   margin-left: 90px; 
  } 
 
+ #myInput {
+  align-items: center;
+  display: flex;
+
+  justify-content: center; 
+width: 50%;
+ }
 .file_li{ 
  display: list-item;     
 }  
+ul {
+  list-style: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: red;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+.btn_transcript{
+  background-color: #4CAF50;
+  border: none;
+
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}_

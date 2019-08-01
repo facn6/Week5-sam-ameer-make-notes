@@ -2,6 +2,7 @@ const searchBar = document.getElementById('myInput');
 
 fetch(`${window.location.href}api/assets`)
   .then(data => data.json()).then(({ files }) => {
+    console.log(files);
     files.forEach((file) => {
       const node = document.createElement('LI');
       const textnode = document.createTextNode(file);
@@ -9,18 +10,23 @@ fetch(`${window.location.href}api/assets`)
       node.appendChild(textnode);
       node.addEventListener('click', (e) => {
         searchBar.value = file;
-      });
+          });
       document.getElementById('list').appendChild(node);
     });
   });
 
 const transcribe = (filename) => {
+
   fetch(`${window.location.href}api/transcribe?file=${filename}`)
     .then(data => data.json()).then(({ files }) => {
-
+      document.getElementById("note").innerHTML = files;
+      console.log('here');
     });
 };
-// transcribe('ameer-test.wav');
+
+document.getElementById("start").addEventListener("click", function(){
+  transcribe(searchBar.value);
+});
 
 function search_audio() {
   const input = searchBar.value.toLowerCase();
@@ -33,13 +39,4 @@ function search_audio() {
     }
   }
 }
-// document.getElementById('submit').addEventListener('click', (e) => {
-//   if (document.getElementById('myInput').value === '') {
-//     inputError = 'Please select some value!';
-//     document.getElementById('input_error').style.color = 'red';
-//     document.getElementById('input_error').innerHTML = inputError;
-//   } else {
-//     document.getElementById('input_error').innerHTML = '';
-//     console.log(document.getElementById('myInput').value);
-//   }
-// });
+
