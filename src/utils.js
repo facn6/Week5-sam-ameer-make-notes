@@ -21,6 +21,8 @@ const folderContents = (dir, cb) => {
 const transcribeAudio = (filename, cb) => {
   const filepath = path.join(__dirname, '..', 'Assets', filename);
 
+  console.log('sending file =', filepath);
+
   const config = {
     encoding: 'LINEAR16',
     languageCode: 'en-US',
@@ -44,6 +46,8 @@ const transcribeAudio = (filename, cb) => {
       cb(err);
     }
     const body = JSON.parse(jsonBody);
+    console.log('json returned = ', body);
+    console.log('json returned results = ', body.results);
     const transcript = body.results.map(result => result.alternatives[0].transcript).join('\n');
 
     cb(null, transcript);

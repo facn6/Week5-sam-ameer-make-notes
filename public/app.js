@@ -1,32 +1,42 @@
 const searchBar = document.getElementById('myInput');
 
-fetch(`${window.location.href}api/assets`)
-  .then(data => data.json()).then(({ files }) => {
-    console.log(files);
-    files.forEach((file) => {
-      const node = document.createElement('LI');
-      const textnode = document.createTextNode(file);
-      node.className = 'file_li';
-      node.appendChild(textnode);
-      node.addEventListener('click', (e) => {
-        searchBar.value = file;
-          });
-      document.getElementById('list').appendChild(node);
-    });
-  });
-
-const transcribe = (filename) => {
-
-  fetch(`${window.location.href}api/transcribe?file=${filename}`)
+const runFetch = (url, cb) => {
+  fetch(url)
     .then(data => data.json()).then(({ files }) => {
-      document.getElementById("note").innerHTML = files;
-      console.log('here');
+      cb(null, files);
+    }).catch((err) => {
+      cb(err);
     });
 };
 
-document.getElementById("start").addEventListener("click", function(){
-  transcribe(searchBar.value);
-});
+const getStoredFiles = () => {
+  runFetch('/api/assets', (err, files) => {
+    if (err) {
+      document.getElementById('note').innerHTML = 'Transcription was not possible with this file sorry';
+    } else {
+      files.forEach((file) => {
+        const node = document.createElement('LI');
+        const textnode = document.createTextNode(file);
+        node.className = 'file_li';
+        node.appendChild(textnode);
+        node.addEventListener('click', (e) => {
+          searchBar.value = file;
+        });
+        document.getElementById('list').appendChild(node);
+      });
+    }
+  });
+};
+
+const transcribe = (filename) => {
+  runFetch(`/api/transcribe?file=${filename}`, (err, files) => {
+    if (err) {
+      document.getElementById('note').innerHTML = 'Transcription was not possible with this file sorry';
+    } else {
+      document.getElementById('note').innerHTML = files;
+    }
+  });
+};
 
 function search_audio() {
   const input = searchBar.value.toLowerCase();
@@ -40,3 +50,8 @@ function search_audio() {
   }
 }
 
+getStoredFiles();
+
+document.getElementById('start').addEventListener('click', () => {
+  transcribe(searchBar.value);
+});
