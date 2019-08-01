@@ -13,7 +13,7 @@ const homeHandler = (req, res) => {
   const { pathname } = url.parse(req.url);
   const extension = pathname.split('.').length > 1 ? pathname.split('.')[1] : 'html';
   const endPath = pathname === '/' ? 'index.html' : pathname;
-  const filepath = path.join(__dirname, '..', '/public/', endPath);
+  const filepath = path.join(__dirname, '..', 'public', endPath);
   fs.readFile(filepath, (err, file) => {
     if (err) {
       res.writeHead(500, { 'content-type': 'text/plain' });
