@@ -1,4 +1,4 @@
-let searchBar = document.getElementById('myInput');
+const searchBar = document.getElementById('myInput');
 
 fetch(`${window.location.href}api/assets`)
   .then(data => data.json()).then(({ files }) => {
@@ -9,7 +9,7 @@ fetch(`${window.location.href}api/assets`)
       node.appendChild(textnode);
       node.addEventListener('click', (e) => {
         searchBar.value = file;
-          })
+      });
       document.getElementById('list').appendChild(node);
     });
   });
@@ -23,7 +23,7 @@ const transcribe = (filename) => {
 // transcribe('ameer-test.wav');
 
 function search_audio() {
-  let input = searchBar.value.toLowerCase();
+  const input = searchBar.value.toLowerCase();
   const x = document.getElementsByClassName('file_li');
   for (i = 0; i < x.length; i++) {
     if (!x[i].innerHTML.toLowerCase().includes(input)) {
